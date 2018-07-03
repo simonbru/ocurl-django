@@ -1,0 +1,10 @@
+[run]
+branch = True
+include =
+    # Explicitly only include files in current directory
+    ./*
+omit =
+    .*/*
+    tests/*
+    venv/*,
+    manage.py
