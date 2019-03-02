@@ -1,11 +1,7 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404
-from django.shortcuts import redirect
-from django.template import loader
+from django.shortcuts import get_object_or_404, redirect, render
+
 from .forms import LinkForm
 from .models import Link
-
 
 
 def hello(request):
@@ -18,6 +14,7 @@ def hello(request):
     # JRESTE SOUS LE DRAPS COMME KKK
     # TODO remove link forms after dev
     return render(request, 'links/index.html.j2', context={'form': form, 'links': Link.objects.all()})
+
 
 def shortener_redirect(request, name):
     """Redirects to destination based on the name"""

@@ -1,7 +1,10 @@
 import random
 import string
+
 from django import forms
+
 from .models import Link
+
 
 class LinkForm(forms.ModelForm):
 
@@ -16,7 +19,8 @@ class LinkForm(forms.ModelForm):
         name = self.cleaned_data['name']
 
         if not name:
-            # TODO improve naive algorithm as we could have concurrent creation that could cause unique exception
+            # TODO: improve naive algorithm as we could have concurrent
+            #       creation that could cause unique exception
             for _ in range(10):
                 try:
                     name = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))

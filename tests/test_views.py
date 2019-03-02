@@ -1,6 +1,6 @@
 import pytest
-
 from django.core.management import call_command
+
 
 class TestHelloView:
 
@@ -15,7 +15,6 @@ class TestHelloView:
         r = client.get('/app/r/test')
         assert r.status_code == 302
 
-    
     @pytest.fixture(scope='session')
     def django_db_setup(django_db_setup, django_db_blocker):
         with django_db_blocker.unblock():
