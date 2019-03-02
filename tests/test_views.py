@@ -11,6 +11,13 @@ class TestHelloView:
         r = client.get(self.url)
         assert r.status_code == 200
 
+    def test_random_name_when_name_field_is_empty(self, db, client):
+        r = client.post(self.url, data={
+            'name': '',
+            'destination': 'https://something.invalid',
+        })
+        assert r.status_code == 200 and Link.objects.get(destination='https://something.invalid').name
+
 
 class TestRedirectView:
 
