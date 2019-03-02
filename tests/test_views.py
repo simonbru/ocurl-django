@@ -16,7 +16,7 @@ class TestRedirectView:
 
     url = '/app/r/'
 
-    def test_redirect_work(self, db, client):
+    def test_redirect_works(self, db, client):
         mommy.make(Link, name='test', destination='https://something.invalid')
-        r = client.get(self.url + 'test')
+        r = client.get(self.url + 'test/')
         assert r.status_code == 302 and r.url == 'https://something.invalid'
