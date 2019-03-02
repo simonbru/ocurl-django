@@ -1,12 +1,16 @@
 <!DOCTYPE html>
+<html>
+<body>
+<a href="{{ url('home') }}">{{ gettext("Home %(sd)s", sd='fd') }}</a>
 <form method="post">
   {{ csrf_input }}
   {{ form }}
-  <button type="submit">Shorten</button>
+  <button type="submit">{{ gettext("Shorten") }}</button>
 </form>
 <ul>
-
 {% for link in links %}
   <li>{{ link.name }} -> {{ link.destination }}</li>
 {% endfor %}
 </ul>
+</body>
+</html>
