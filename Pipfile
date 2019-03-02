@@ -9,6 +9,8 @@ jinja2 = "*"
 python-decouple = "*"
 
 [dev-packages]
+django-debug-toolbar = "*"
+django-extensions = "*"
 ipdb = "*"
 pytest = "*"
 pytest-cov = "*"
