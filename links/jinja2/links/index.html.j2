@@ -2,4 +2,11 @@
 <form method="post">
   {{ csrf_input }}
   {{ form }}
+  <button type="submit">Shorten</button>
 </form>
+<ul>
+
+{% for link in links %}
+  <li>{{ link.name }} -> {{ link.destination }}</li>
+{% endfor %}
+</ul>
