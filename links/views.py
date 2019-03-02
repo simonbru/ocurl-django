@@ -1,9 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.template import loader
 from .forms import LinkForm
 from .models import Link
+
 
 
 def hello(request):
@@ -19,5 +21,5 @@ def hello(request):
 
 def shortener_redirect(request, name):
     """Redirects to destination based on the name"""
-    destination = Link.objects.get(name=name).destination
+    destination = get_object_or_404(Link, name=name).destination
     return redirect(destination)
