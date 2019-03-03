@@ -10,7 +10,7 @@ class LinkForm(forms.ModelForm):
 
     class Meta:
         model = Link
-        fields = ['name', 'destination']
+        fields = ['name', 'destination', 'expiration_date']
 
     def clean_name(self):
         """Generates a random string of 6 chars when name was not specified"""

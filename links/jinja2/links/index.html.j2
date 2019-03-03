@@ -8,7 +8,7 @@
   <form method="post">
     {{ csrf_input }}
     {{ form }}
-    <button type="submit">{{ gettext("Shorten") }}</button>
+    <button type="submit">{{ gettext("Shorten") }} | {{ link.expiration_date }}</button>
   </form>
   <ul>
   {% for link in links %}
