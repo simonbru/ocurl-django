@@ -1,7 +1,5 @@
-import random
-import string
-
 from django import forms
+from django.utils.crypto import get_random_string
 
 from .models import Link
 
@@ -23,7 +21,7 @@ class LinkForm(forms.ModelForm):
             #       creation that could cause unique exception
             for _ in range(10):
                 try:
-                    name = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
+                    name = get_random_string(length=6)
                     Link.objects.get(name=name)
                 except Link.DoesNotExist:
                     break
