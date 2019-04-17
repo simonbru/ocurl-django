@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html>
-<body>
-<a href="{{ url('home') }}">{{ gettext("Home %(sd)s", sd='fd') }}</a>
-<form method="post">
-  {{ csrf_input }}
-  {{ form }}
-  <button type="submit">{{ gettext("Shorten") }}</button>
-</form>
-<ul>
-{% for link in links %}
-  <li>{{ link.name }} -> {{ link.destination }}</li>
-{% endfor %}
-</ul>
-</body>
-</html>
+{% extends 'base.html.j2' %}
+
+{% import 'helpers/webpack.html.j2' as webpack %}
+
+{% block body %}
+  <a href="{{ url('home') }}">{{ gettext("Home") }}</a>
+  <div id="hello">Loading...</div>
+  <form method="post">
+    {{ csrf_input }}
+    {{ form }}
+    <button type="submit">{{ gettext("Shorten") }}</button>
+  </form>
+  <ul>
+  {% for link in links %}
+    <li>{{ link.name }} -> {{ link.destination }}</li>
+  {% endfor %}
+  </ul>
+{% endblock body %}
+
+{% block scripts %}
+  {{ webpack.script_tags('helloworld') }}
+{% endblock %}

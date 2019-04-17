@@ -1,0 +1,16 @@
+{% import 'helpers/webpack.html.j2' as webpack %}
+
+<!DOCTYPE html>
+<html>
+<head>
+{% block styles %}
+  {{ webpack.style_tags('common') }}
+{% endblock %}
+</head>
+<body>
+{% block body %}{% endblock %}
+{% block scripts %}
+  {{ webpack.script_tags('common') }}
+{% endblock %}
+</body>
+</html>
