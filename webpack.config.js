@@ -10,6 +10,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = (env, argv) => {
   const prodMode = argv.mode === 'production';
+  // 'chunkhash' does not work with hot reloading for some reason
+  const hashParam = argv.inline ? 'hash' : 'chunkhash';
+
   return {
     resolve: {
       modules: [
@@ -62,7 +65,19 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'static/dist'),
       publicPath: '/static/dist/',
-      filename: '[name].[chunkhash:4].bundle.js'
+      filename: `[name].[${hashParam}:4].bundle.js`
+    },
+    devServer: {
+      hot: true,
+      writeToDisk: filePath => filePath.endsWith('/manifest.json'),
+      overlay: {
+        errors: true,
+      },
+      proxy: {
+        '/': {
+          target: process.env.PROXY_TARGET_URL || 'http://localhost:8000',
+        }
+      }
     },
     optimization: {
       minimizer: [
@@ -76,7 +91,7 @@ module.exports = (env, argv) => {
     plugins: [
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
-        filename: "[name].[chunkhash:4].bundle.css",
+        filename: `[name].[${hashParam}:4].bundle.css`,
       }),
       new ManifestPlugin(),
     ],
