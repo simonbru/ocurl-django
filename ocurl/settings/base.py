@@ -2,7 +2,7 @@ import os
 
 from decouple import Csv, config
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.join(os.path.dirname(__file__), '..', '..')
 
 
 DEBUG = config('DEBUG', default=False, cast=bool)
