@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "build": "rm static/dist -rf && webpack -p",
-    "build:dev": "rm static/dist -rf && webpack --mode=development",
+    "build": "webpack -p",
+    "build:dev": "webpack --mode=development",
     "clean": "rm static/dist -rf",
     "lint": "eslint assets/js",
-    "watch": "webpack --watch --mode=development --progress"
+    "watch": "webpack --watch -p --progress",
+    "watch:dev": "webpack --watch --mode=development --progress"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
@@ -24,6 +25,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.1",
     "core-js": "^3.0.1",
     "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
