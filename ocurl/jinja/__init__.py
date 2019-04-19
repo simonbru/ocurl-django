@@ -1,5 +1,6 @@
 from django.shortcuts import resolve_url
 from django.templatetags.static import static
+
 from jinja2 import Environment
 
 from .webpack import webpack_scripts, webpack_styles
