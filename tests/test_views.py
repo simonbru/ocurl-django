@@ -1,4 +1,5 @@
 from django.utils import timezone
+
 from model_mommy import mommy
 
 from links.models import Link
