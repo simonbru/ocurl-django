@@ -8,11 +8,11 @@
   <form method="post">
     {{ csrf_input }}
     {{ form }}
-    <button type="submit">{{ gettext("Shorten") }} | {{ link.expiration_date }}</button>
+    <button type="submit">{{ gettext("Shorten") }}</button>
   </form>
   <ul>
   {% for link in links %}
-    <li>{{ link.name }} -> {{ link.destination }}</li>
+    <li>{{ link.name }} -> {{ link.destination }} | {{ link.expiration_date }}</li>
   {% endfor %}
   </ul>
 {% endblock body %}
