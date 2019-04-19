@@ -18,5 +18,7 @@ def hello(request):
 
 def shortener_redirect(request, name):
     """Redirects to destination based on the name"""
-    destination = get_object_or_404(Link, name=name).destination
-    return redirect(destination)
+    link = get_object_or_404(Link, name=name)
+    if link.is_expired:
+        return render(request, 'links/expired.html.j2', status=410)
+    return redirect(link.destination)
