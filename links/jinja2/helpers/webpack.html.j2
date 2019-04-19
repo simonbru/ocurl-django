@@ -1,0 +1,11 @@
+{% macro script_tags(entrypoint) -%}
+  {% for script_url in webpack_scripts(entrypoint) %}
+    <script src="{{ script_url }}"></script>
+  {% endfor %}
+{%- endmacro %}
+
+{% macro style_tags(entrypoint) -%}
+  {% for css_url in webpack_styles(entrypoint) %}
+    <link rel="stylesheet" href="{{ css_url }}">
+  {% endfor %}
+{%- endmacro %}
