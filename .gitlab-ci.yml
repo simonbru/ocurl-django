@@ -1,0 +1,18 @@
+---
+stages:
+  - test
+
+cache:
+  paths:
+    - .cache/
+
+before_script:
+  - PIP_CACHE_DIR=.cache/pip/ pip install pipenv
+  - pipenv --version
+  - PIPENV_CACHE_DIR=.cache/pipenv/ pipenv install --dev
+
+test pytest:
+  stage: test
+  image: python:3.7
+  script:
+    - pipenv run pytest
