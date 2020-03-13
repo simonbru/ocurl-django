@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django = "*"
+graphene-django = "*"
 jinja2 = "*"
 python-decouple = "*"
 
