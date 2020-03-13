@@ -15,7 +15,7 @@ class LinkForm(forms.ModelForm):
     def clean_name(self):
         """Generates a random string of 6 chars when name was not specified"""
         name = self.cleaned_data['name']
-
+        raise forms.ValidationError("Custom error")
         if not name:
             # TODO: improve naive algorithm as we could have concurrent
             #       creation that could cause unique exception
@@ -26,3 +26,10 @@ class LinkForm(forms.ModelForm):
                 except Link.DoesNotExist:
                     break
         return name
+
+
+class SomeForm(forms.Form):
+    truc = forms.CharField()
+
+    def clean_truc(self):
+        raise forms.ValidationError("Truc is not clean")

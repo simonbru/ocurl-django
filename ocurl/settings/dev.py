@@ -16,3 +16,7 @@ INSTALLED_APPS += [
 MIDDLEWARE += [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+GRAPHENE['MIDDLEWARE'] += [
+    'graphene_django.debug.DjangoDebugMiddleware',
+]

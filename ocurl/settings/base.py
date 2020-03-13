@@ -136,4 +136,5 @@ STATICFILES_DIRS = [
 
 GRAPHENE = {
     'SCHEMA': 'ocurl.schema.schema',
+    'MIDDLEWARE': [],
 }
